@@ -1,0 +1,55 @@
+<h1 class="row justify-content-center" style="margin-top: 5px;background-color: #f5f5f5; color: #EA2845">User Detail
+    Form</h1>
+<div class="container mt-5" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp');">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card" style="margin: 20px;">
+                <div class="card-body" style="background-color: #f8f8f8;">
+                    <h5 class="card-title">Form</h5>
+                    <form (ngSubmit)="onSubmit()" #form="ngForm">
+                        <div class="mb-3">
+                            <label for="inputName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="inputName" [(ngModel)]="formData.name"
+                                name="name" placeholder="Enter name" required>
+                            <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+                                class="text-danger">
+                                Name is required
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" [(ngModel)]="formData.email"
+                                name="email" placeholder="Enter email" required>
+                            <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+                                class="text-danger">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="inputPhone" [(ngModel)]="formData.phoneNumber"
+                                name="phoneNumber" placeholder="Enter phone number" required>
+                            <div *ngIf="form.controls['phoneNumber'].invalid && (form.controls['phoneNumber'].dirty || form.controls['phoneNumber'].touched)"
+                                class="text-danger">
+                                Please enter a valid phone number
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <textarea class="form-control" id="inputAddress" [(ngModel)]="formData.address"
+                                name="address" rows="3" placeholder="Enter address" required></textarea>
+                            <div *ngIf="form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)"
+                                class="text-danger">
+                                Address is required
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+                            '<button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

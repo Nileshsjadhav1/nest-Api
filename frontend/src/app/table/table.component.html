@@ -1,0 +1,42 @@
+<h2 style="margin: 30px; color: #EA2845;">User Detail Table</h2>
+<div class="table-responsive" style="margin: 30px; border: 1px solid #262626;">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of dataSource">
+                <td>{{ row._id }}</td>
+                <td>
+                    <input type="text" [(ngModel)]="row.name" [disabled]="!row.editable" />
+                </td>
+                <td>
+                    <input type="email" [(ngModel)]="row.email" [disabled]="!row.editable" />
+                </td>
+                <td>
+                    <input type="tel" [(ngModel)]="row.phoneNumber" [disabled]="!row.editable" />
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="row.address" [disabled]="!row.editable" />
+                </td>
+                <td>
+                    <button *ngIf="!row.editable" style="margin-left: 5px;" class="btn btn-primary"
+                        (click)="toggleEdit(row)">Edit</button>
+                    <button *ngIf="row.editable" class="btn btn-secondary" style="margin-left: 5px;"
+                        (click)="saveRow(row)">Save</button>
+                    <button (click)="deleteRow(row)" class="btn btn-danger" style="margin-left: 5px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="text-align: center;">
+    <button class="btn btn-primary" style="margin-bottom: 5px;" (click)="tableDataToJson()">Generate PDF</button>
+</div>
